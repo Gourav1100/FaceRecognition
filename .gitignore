@@ -1,0 +1,19 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# JupyterLab checkpoints
+.ipynb_checkpoints/
+
+# dataset
+dataset/*
