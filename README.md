@@ -7,11 +7,11 @@ Kaggle Dataset for face and its elements location. [![dataset][1.2]][1]
 ```sh
 git clone --recursive git@github.com:Gourav1100/FaceRecognition.git
 cd FaceRecognition
-conda create -n venv python=3
-conda activate venv
-conda install -c conda-forge jupyterlab
+sudo apt install python3-venv
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
 pip install -r ./requirements.txt
-jupyter-lab
 ```
 Download and put dataset in a directory name dataset.
 <!-- Datasetlink -->
