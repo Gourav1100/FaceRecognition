@@ -1,6 +1,6 @@
 # FaceRecognition
 ## Download Training Dataset from -
-KDataset for face and its elements location. [![dataset][1.2]][1]
+Dataset for face and its elements location. [![dataset][1.2]][1]
 
 
 ## Installation Instructions -
