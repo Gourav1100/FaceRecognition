@@ -16,6 +16,8 @@ class faceTrain:
     def __init__(self):
         self.epochs = 250
         self.state = False
+        self.model = "NULL"
+        self.loadedModelName = ""
 
     def test(self):
         if self.state == False:
@@ -41,9 +43,10 @@ class faceTrain:
 
     # predict locations
     def predict(self,img,model):
-        if self.load_model(model):
+        if self.loadedModelName == model or self.load_model(model):
             img = img / 255
-            img = np.reshape( img , ( 96 , 96 ) ).astype(np.uint8)
+            img = np.reshape( img , ( 96 , 96, 1 ) ).astype(np.uint8)
+            img = np.array([img])
             predictions = self.model.predict(img) * 96
             predictions = predictions.astype( np.int32 )
             predictions = np.reshape( predictions[ 0 , 0 , 0 ], ( 15 , 2 ) )
@@ -182,6 +185,8 @@ class faceTrain:
 
     # load model from disk
     def load_model(self, name):
+        if self.loadedModelName == name:
+            return True
         location = ["./json_model/"+name+".json", "./json_model/"+name+".h5"]
         try:
             file = open(location[0])
@@ -191,6 +196,8 @@ class faceTrain:
             self.model.load_weights(location[1])
             self.state = 1
             print(self.model.summary())
+            self.loadedModelName = name
+            return True
         except:
             print("Model not found. Trying to train model.")
             if self.auto_train():
